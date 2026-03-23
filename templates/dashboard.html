@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="header">📊 Analytics Dashboard</div>
+
+<div style="padding:20px;">
+    {% for item, score in data["scores"].items() %}
+        <p>{{item}} → {{score}}</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

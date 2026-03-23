@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Smart Recommender</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>🤖 AI Smart Product Recommender</h2>
+
+<div id="chat"></div>
+
+<input id="msg" placeholder="Ask anything..." />
+<button onclick="send()">Send</button>
+
+<script>
+function send() {
+    let msg = document.getElementById("msg").value;
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: msg})
+    })
+    .then(res => res.json())
+    .then(data => {
+        let chat = document.getElementById("chat");
+
+        chat.innerHTML += `<div class="user">You: ${msg}</div>`;
+        chat.innerHTML += `<div class="bot">${data.reply}</div>`;
+
+        data.products.forEach(p => {
+            chat.innerHTML += `
+                <div class="card">
+                    <img src="${p.image}" width="200"/>
+                    <p>${p.name}</p>
+                    <button onclick="fb('${p.name}','like')">👍</button>
+                    <button onclick="fb('${p.name}','dislike')">👎</button>
+                </div>
+            `;
+        });
+    });
+}
+
+function fb(p, a) {
+    fetch("/feedback", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({product: p, action: a})
+    });
+}
+</script>
+
+</body>
+</html>

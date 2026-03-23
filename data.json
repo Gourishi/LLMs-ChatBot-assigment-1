@@ -1,0 +1,22 @@
+{
+    "scores": {
+        "Asus ROG Phone": 0,
+        "iQOO Neo": 0,
+        "OnePlus 11": 0,
+        "Redmi Note": 0,
+        "Realme Narzo": 0,
+        "Poco X series": 0,
+        "iPhone 14": 0,
+        "Samsung S23": 0,
+        "Google Pixel": 0,
+        "MacBook Air": 10,
+        "Dell XPS": 0,
+        "HP Pavilion": 0
+    },
+    "history": [
+        {
+            "product": "MacBook Air",
+            "action": "like"
+        }
+    ]
+}
